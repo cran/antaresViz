@@ -56,7 +56,8 @@
   res <- list(coords = data, dir = 0)
   
   # color
-  if (colVar != "none" & length(sizeVar) <= 1) {
+  if (!colVar %in% names(data)) colVar <- "none"
+  if (colVar != "none") {
     if (is.numeric(data[[colVar]])) {
       rangevar <- range(data[[colVar]])
       # Special case of FLOW LIN
@@ -92,6 +93,7 @@
   }
   
   # size
+  sizeVar <- intersect(sizeVar, names(data))
   if (length(sizeVar) > 0 && !("none" %in% sizeVar)) {
     res$size <- as.matrix(data[, sizeVar, with = FALSE])
     res$maxSize <- apply(abs(as.matrix(data[, sizeVar, with = FALSE])), 2, max)
@@ -128,6 +130,7 @@
 .initMap <- function(x, ml, options) {
   
   map <- plot(ml, areas = !is.null(x$areas), links = !is.null(x$links), 
+              colAreas = options$areaDefaultCol,
               opacityArea = 1, opacityLinks = 1, 
               labelMinSize = options$labelMinSize,
               labelMaxSize = options$labelMaxSize,
@@ -143,6 +146,7 @@
                            popupAreaVars, uniqueScale, showLabels, labelAreaVar,
                            areaChartType,
                            options) {
+  
   if (is.null(x$areas)) return(map)
   timeStep <- attr(x, "timeStep")
   
@@ -186,10 +190,33 @@
   
   showValuesInPopup <- length(sizeAreaVars) > 0
   
+  # Update corresponding polygons if necessary
+  if (!is.null(ml$map)) {
+    onChange <- JS('
+      var s = this._map.layerManager.getLayer("shape", this.layerId);
+      s.bindPopup(popup);
+      if (opts.fillColor) {
+        d3.select(s._path)
+          .transition()
+          .duration(750)
+          .attr("fill", opts.fillColor);
+      }
+    ')
+    if (length(sizeAreaVars) < 2) width <- 0
+    else width <- areaWidth
+  } else {
+    onChange <- JS(NULL)
+    width <- areaWidth
+    if (length(sizeAreaVars) >= 2) {
+      optsArea$color <- options$areaDefaultCol
+      optsArea$pal <- NULL
+    }
+  }
+  
   # Update areas
   map <- updateMinicharts(map, optsArea$coords$area, chartdata = optsArea$size,
                           time = optsArea$coords$time,
-                          maxValues = optsArea$maxSize, width = areaWidth,
+                          maxValues = optsArea$maxSize, width = width,
                           height = options$areaMaxHeight,
                           showLabels = showLabels, labelText = labels, 
                           type = areaChartType[[1]], 
@@ -197,6 +224,7 @@
                           fillColor = optsArea$color,
                           timeFormat = .getTimeFormat(timeStep),
                           legend = FALSE,
+                          onChange = onChange,
                           popup = popupArgs(
                             showValues = showValuesInPopup,
                             digits = 2,
