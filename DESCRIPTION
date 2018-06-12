@@ -1,8 +1,8 @@
 Package: antaresViz
 Type: Package
 Title: Antares Visualizations
-Version: 0.13.0
-Date: 2018-05-03
+Version: 0.14.0
+Date: 2018-06-12
 Authors@R: c(
     person("Jalal-Edine", "ZAWAM", , "jalal-edine.zawam@rte-france.com", role = c("aut", "cre")),
     person("Francois", "Guillem", , "francois.guillem@rte-france.com", role = "aut"),
@@ -33,7 +33,7 @@ RoxygenNote: 6.0.1
 Suggests: testthat, covr, rhdf5 (>= 2.20.2), rbokeh, knitr, visNetwork
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2018-05-15 08:30:53 UTC; jalazawa
+Packaged: 2018-06-12 10:43:54 UTC; jalazawa
 Author: Jalal-Edine ZAWAM [aut, cre],
   Francois Guillem [aut],
   Benoit Thieurmel [aut],
@@ -41,4 +41,4 @@ Author: Jalal-Edine ZAWAM [aut, cre],
   Baptiste SEGUINOT [ctb],
   RTE [cph]
 Repository: CRAN
-Date/Publication: 2018-05-22 20:50:29 UTC
+Date/Publication: 2018-06-12 13:33:51 UTC

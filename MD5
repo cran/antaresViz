@@ -1,7 +1,7 @@
-163a5d94e2a5ee9372529be48ae93340 *DESCRIPTION
+f26bf0bfa800d44d7799caaa89a2fb69 *DESCRIPTION
 cf47069209a8ee5e05e334b69c3deb13 *LICENSE
 3a069608fca895b654cfd3a7ae39b3f1 *NAMESPACE
-1d9b6b6d3526e3ccd83b571da0eb6073 *NEWS
+47a7ef579f513a28a19a11dd8e171381 *NEWS
 6c8de1ade080932d17f2ff37848ae46e *R/catColorPal.R
 75132bf32b78fa874ef9245ee7958a7e *R/continuousColorPal.R
 77e6ec9fbee6f4a132764148f0b322a3 *R/get_data_for_comp.R
@@ -49,8 +49,8 @@ c6dbe23852430767fdbf07ce50965e95 *inst/application/src/server/01_set_read_data.R
 0ef06286fed203cfda4cc3f81fbc9e66 *inst/application/src/server/02_load_data.R
 ee169a64c77db4d2dae3199bed6b7834 *inst/application/src/server/03_data_selection.R
 6f0756ffd2103bb4d5e6e13fc1a3221e *inst/application/src/server/04_shared_input.R
-8634bbf653f4e234f1ddd8b3db615484 *inst/application/src/server/05_modules.R
-0c3b3c8205f377ef96c5f5e4d48c7ca8 *inst/application/src/server/06_module_map.R
+80d1b51241417c8f36398b0e32be9457 *inst/application/src/server/05_modules.R
+9f258e8db4912af9b7d9737cffafd147 *inst/application/src/server/06_module_map.R
 ab5d77c642cb08d118d92f954e4372b4 *inst/application/src/server/07_write_h5.R
 e798bbd453a68bf04fe23eb33353c610 *inst/application/src/server/08_language.R
 46be51a81bf149f47208afd10fe934dc *inst/application/src/tests/size_app.R
@@ -82,7 +82,7 @@ f205f177df70ccf563509e79af95982d *inst/application/www/writeAntaresH5.html
 1a263b6e75d1321ff8289f8806baf371 *inst/color.csv
 3e5fcb48021bc8b5aabde3c073b18aa2 *inst/doc/antaresViz.R
 e649038d5a2cc73b87066cf0394acc3a *inst/doc/antaresViz.Rmd
-34aa894c2293bf6333828735565cc18c *inst/doc/antaresViz.html
+2d56c43977db06c08eedf8fc5b43723e *inst/doc/antaresViz.html
 328c5417d11f9f30326f9855f1635d34 *inst/htmlwidgets/leafletDragPoints.js
 4c850fbec9d9f89b274b07cf7e68413f *inst/htmlwidgets/leafletDragPoints.yaml
 e35e51d1f5e5f18c5920134efee5b84c *inst/htmlwidgets/lib/Leaflet.awesome-markers/images/markers-matte.png
