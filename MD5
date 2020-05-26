@@ -1,7 +1,7 @@
-7c360927cf3af2079fd5785f767c3156 *DESCRIPTION
+71db1268be23af5dc92fb7fca3b4eb59 *DESCRIPTION
 8eb461f447c32f3085f846907a97ca26 *LICENSE
-695b5f194e85d7b7b0e8f72f45b9109e *NAMESPACE
-9ef4f26e1814380d79b836ebd3618130 *NEWS
+3a069608fca895b654cfd3a7ae39b3f1 *NAMESPACE
+a9add593ca3a9bd5e9b4cd41ad4c49fb *NEWS.md
 e4861e0537bd8952164dcd3e66ce81eb *R/catColorPal.R
 75132bf32b78fa874ef9245ee7958a7e *R/continuousColorPal.R
 35d2c71fed26945a3fd8449b4cee038e *R/get_data_for_comp.R
@@ -20,7 +20,7 @@ e577a8ba2ab3739ac6801a8d1fdd9916 *R/map_legends.R
 c6e975016a3e2e345e5639118f1773ae *R/mod_XY.R
 2209eb860f0c7af8b4c09dbbb182ec1a *R/mod_rpart.R
 c6a63f83cb345b741bbe3620f1f688db *R/plot.R
-d6c97f14fe39a1d38104a36cbfe71260 *R/plot_XY.R
+d232ad41a1e40cdf6dda44a6015644bf *R/plot_XY.R
 a378fb16f6336b8d2c810a4a0615b8fd *R/plot_barplot.R
 1619adeba9567262c31d3db6a821ef07 *R/plot_heatmap.R
 defa18fe9410485e5aa09ce8f67c8feb *R/plot_stats.R
@@ -35,11 +35,11 @@ d094a56367745381a4f8c777cddd571a *R/stack.R
 e32db6598b00d3a63151c23a0479f732 *R/stack_aliases.R
 0d54788b9d29182992b3fa54ed564355 *R/stack_exchanges.R
 4c809231288562783c82aa46fbb3a3e9 *R/stack_map.R
-7351b2393d855be5f5bf6014631656a4 *R/stack_prod.R
+9d79be5725235ba8ad3edfaf4fbf39e4 *R/stack_prod.R
 5ed96e0d088d5c80d4c55938ac99e945 *R/tsLegend.R
 3eb5f70aca2947e720c1cf28f30cab78 *R/zzz.R
 0d81cc51c8f6e6d7430bc18f2b330656 *README.md
-3fd9de61e21928c4e8f5b360211cb682 *build/vignette.rds
+9d76c33019bd78fa113279702e242aa2 *build/vignette.rds
 ef2d568c02517a316fa20d54afaade9d *inst/AntaresViz.xlsx
 5caf322ba50d29fb579e1a597585840e *inst/GraphicalCharter.csv
 c1097b8ba8be57e85cf5bd12358598de *inst/application/global.R
@@ -82,7 +82,7 @@ f9234e4077576925f0d4ca38d153f1fb *inst/application/www/readAntares.html
 a06f61fadfa8b427beac1ca86f961c2a *inst/color.csv
 c1c8c83d7e2d4fb36fd69373db92c316 *inst/doc/antaresViz.R
 942c9db18ea6f2d47efab6033558d34e *inst/doc/antaresViz.Rmd
-da48949f38c5de5dc2d9c2085ca51ed5 *inst/doc/antaresViz.html
+0d3c80e50f3fc537460b1e462058d67f *inst/doc/antaresViz.html
 89011e88d827bd9e2308062d89b65e0e *inst/htmlwidgets/leafletDragPoints.js
 4efe3fa3460b0648387cec6335932b36 *inst/htmlwidgets/leafletDragPoints.yaml
 e35e51d1f5e5f18c5920134efee5b84c *inst/htmlwidgets/lib/Leaflet.awesome-markers/images/markers-matte.png
@@ -114,7 +114,7 @@ f1c13e532de332e63a2dd48c93c665d7 *inst/test_scripts/compare_test.R
 9138f17d16744e8e1de866e783ae2b45 *man/addShadows.Rd
 5131ec6c023622f7fa76c50fe81d40cc *man/exchangesStack.Rd
 3d49798626e3d61b11bc735295e5dbd6 *man/figures/antares_simulator.png
-92bf17c0f02cc41fe70cf1a8a366e992 *man/limitSizeGraph.Rd
+ae87a9ad1bc412c3b6b6d26d37c27ab7 *man/limitSizeGraph.Rd
 a359da9a2b24937444b0616a1d365baf *man/mapLayout.Rd
 7726523b04cce12902d1ea7e93098fff *man/modRpart.Rd
 be18e38ebf5100c0930a39f7336997e2 *man/modXY.Rd
@@ -124,9 +124,9 @@ fa2f082302f6be7ad0c81e2eb3cce7c2 *man/plot.mapLayout.Rd
 ee9be0343e6edbd77e3bf2720a62cd4a *man/plotMapLayout.Rd
 8fe9a9cfb5bf59840f9d054c49bed6f0 *man/plotMapOptions.Rd
 41dbdff93077a0260e473f9d31fbde2f *man/plotThermalGroupCapacities.Rd
-5c7c0f8b49fe56955d61860a4bc73b20 *man/plotXY.Rd
+47ed00ea8394b248c0272c6eb3fd3910 *man/plotXY.Rd
 3b9ac8cd67d50df0e3a7ad1125945e5c *man/prodStack.Rd
-792fddeb0a04db8114c10f71db82fc49 *man/runAppAntaresViz.Rd
+77318782e210b3ce6401e6fcaf127f69 *man/runAppAntaresViz.Rd
 165933da57e8408e12298a6f80e97a78 *man/savePlotAsPng.Rd
 1a7ed305519583673f2d9b464adfda7f *man/setInteractivity.Rd
 3910b7d9a20d7fe7376a1e74141c2d3b *man/stackMap.Rd
