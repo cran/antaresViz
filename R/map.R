@@ -273,6 +273,10 @@ plotMap <- function(x,
       stop("Argument 'x' must be an object of class 'antaresData' created with function 'readAntares'.")
     } else {
       x <- copy(as.antaresDataList(x))
+      if(!is.null(attributes(x$areas)$hvdcAreas)){
+        x <- hvdcModification(x, removeHvdcAreas = TRUE, reafectLinks = FALSE)
+      }
+      
       if(!is.null(x$areas)){
         if(nrow(x$areas) == 0){
           x$areas <- NULL
@@ -431,7 +435,7 @@ plotMap <- function(x,
         .redrawLinks(x, mapLayout, mcYear, t, colLinkVar, sizeLinkVar, popupLinkVars, options) %>% 
         .redrawCircles(x, mapLayout, mcYear, t, colAreaVar, sizeAreaVars, popupAreaVars, 
                        uniqueScale, showLabels, labelAreaVar, areaChartType, options, sizeMiniPlot)
-      
+
       # combineWidgets(map, width = width, height = height) # bug
       map
       
@@ -552,8 +556,11 @@ plotMap <- function(x,
     {
       if(!is.null(params))
       {
-        if(.id <= length(params$x)){
-          .tryCloseH5()
+        .tryCloseH5()
+        # udpate for mw 0.11 & 0.10.1
+        if(!is.null(params)){
+          ind <- .id %% length(params$x)
+          if(ind == 0) ind <- length(params$x)
           
           tmp_options <- optionsT
           if(is.null(tmp_options)){
@@ -565,7 +572,8 @@ plotMap <- function(x,
           } else {
             sizeAreaVars <- unique(do.call("c", map_alias[aliasSizeAreaVars]))
           }
-          widget <- params$x[[.id]]$plotFun(t = params$x[[.id]]$timeId,
+          
+          widget <- params$x[[ind]]$plotFun(t = params$x[[ind]]$timeId,
                                             colAreaVar = colAreaVar,
                                             sizeAreaVars = sizeAreaVars,
                                             popupAreaVars = popupAreaVars,
@@ -585,14 +593,15 @@ plotMap <- function(x,
                                             sizeMiniPlot = sizeMiniPlot,
                                             options = tmp_options)
           
-
+          
           
           # controlWidgetSize(widget, language) # bug due to leaflet and widget
-
           widget
-        } else {
+          
+        }else {
           combineWidgets(.getLabelLanguage("No data for this selection", language))
         }
+        
       }else{
         combineWidgets()
       }
@@ -797,27 +806,43 @@ plotMap <- function(x,
         label = .getLabelLanguage("miniPlot", language),
         areaChartType = mwSelect(
           {
-            choices <- c("bar", "pie", "polar-area", "polar-radius")
-            names(choices) <- c(.getLabelLanguage("bar chart", language),
-                                .getLabelLanguage("pie chart", language),
-                                .getLabelLanguage("polar (area)", language),
-                                .getLabelLanguage("polar (radius)", language))
+            
+            
+            if(length(sizeAreaVars) == 1){
+              
+              choices <- c("pie")
+              names(choices) <- c(.getLabelLanguage("pie chart", language))
+            }
+            if(length(sizeAreaVars) >1){
+  
+              choices <- c("bar", "pie", "polar-area", "polar-radius")
+              names(choices) <- c(.getLabelLanguage("bar chart", language),
+                                  .getLabelLanguage("pie chart", language),
+                                  .getLabelLanguage("polar (area)", language),
+                                  .getLabelLanguage("polar (radius)", language))
+            }
+        
             choices
           },
           value = {
             if(.initial) areaChartType
             else NULL
           }, label = .getLabelLanguage("areaChartType", language), 
-          .display = !"areaChartType" %in% hidden
+          .display = (!"areaChartType" %in% hidden) & (length(sizeAreaVars) >= 2)
         ),
+        
+        
+        # transparantMinichart = mwCheckbox(transparantMinichart, label = .getLabelLanguage("onlyLabel", language),
+        #                        .display = (length(sizeAreaVars) >= 1 | typeSizeAreaVars) & !"showLabels" %in% hidden),
+        # 
         sizeMiniPlot = mwCheckbox(sizeMiniPlot, label = .getLabelLanguage("sizeMiniPlot", language)),
-        .display = (length(sizeAreaVars) >= 2 | typeSizeAreaVars) & !"miniPlot" %in% hidden
+        .display = (length(sizeAreaVars) >= 1 | typeSizeAreaVars) & !"sizeMiniPlot" %in% hidden
       ),
       uniqueScale = mwCheckbox(uniqueScale, label = .getLabelLanguage("Unique scale", language), 
                                .display = length(sizeAreaVars) >= 2 && areaChartType != "pie" & !"uniqueScale" %in% hidden
       ),
       showLabels = mwCheckbox(showLabels, label = .getLabelLanguage("Show labels", language), 
-                              .display = length(sizeAreaVars) >= 2 & !"showLabels" %in% hidden
+                              .display = length(sizeAreaVars) >= 1 & !"showLabels" %in% hidden
       ),
       popupAreaVars = mwSelect(
         choices = 

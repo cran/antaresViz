@@ -1,9 +1,10 @@
 observe({
+  
   ind_keep_list_data <- ind_keep_list_data()
   language <- current_language$language
   isolate({
     if(input$update_module > 0){
-      if(is.null(ind_keep_list_data)){
+      if(is.null(ind_keep_list_data) && is.null(rdsData())){
         showModal(modalDialog(
           easyClose = TRUE,
           footer = NULL,
@@ -21,43 +22,65 @@ observe({
           input_data$data[grepl("^prodStack", input_id), input_id := paste0(id_prodStack, "-shared_", input)]
           
           output[["prodStack_ui"]] <- renderUI({
-            mwModuleUI(id = id_prodStack, height = "800px")
+            if(packageVersion("manipulateWidget") < "0.11"){
+              mwModuleUI(id = id_prodStack, height = "800px")
+            } else {
+              mwModuleUI(id = id_prodStack, height = 800, updateBtn = TRUE)
+            }
           })
           
-          .compare <- input$sel_compare_prodstack
-          if(input$sel_compare_mcyear){
-            .compare <- unique(c(.compare, "mcYear"))
-          }
-          
-          if(length(.compare) > 0){
-            list_compare <- vector("list", length(.compare))
-            names(list_compare) <- .compare
-            # set main with study names
-            if(length(ind_areas) != 1){
-              list_compare$main <- names(list_data_all$antaresDataList[ind_areas])
+          if(packageVersion("manipulateWidget") < "0.11"){
+            .compare <- input$sel_compare_prodstack
+            if(input$sel_compare_mcyear){
+              .compare <- unique(c(.compare, "mcYear"))
             }
-            .compare <- list_compare
-          } else {
-            if(length(ind_areas) > 1){
-              .compare <- list(main = names(list_data_all$antaresDataList[ind_areas]))
+            
+            if(length(.compare) > 0){
+              list_compare <- vector("list", length(.compare))
+              names(list_compare) <- .compare
+              # set main with study names
+              if(length(ind_areas) != 1){
+                list_compare$main <- names(list_data_all$antaresDataList[ind_areas])
+              }
+              .compare <- list_compare
             } else {
-              .compare = NULL
+              if(length(ind_areas) > 1){
+                .compare <- list(main = names(list_data_all$antaresDataList[ind_areas]))
+              } else {
+                .compare = NULL
+              }
             }
+          } else {
+            .compare <- NULL
           }
           
-          mod_prodStack <- prodStack(x = list_data_all$antaresDataList[ind_areas], 
-                                     refStudy = refStudy,
-                                     xyCompare = "union",
-                                     h5requestFiltering = list_data_all$params[ind_areas],
-                                     unit = "GWh", 
-                                     interactive = TRUE, 
-                                     .updateBtn = TRUE, 
-                                     language = language,
-                                     .exportBtn = TRUE, 
-                                     .exportType = c("html2canvas"),
-                                     .updateBtnInit = TRUE, 
-                                     compare = .compare, 
-                                     .runApp = FALSE)
+          if("areas" %in% names(list_data_all$antaresDataList[[ind_areas[1]]])){
+            init_area <- list_data_all$antaresDataList[[ind_areas[1]]]$areas$area[1]
+          } else {
+            init_area <- list_data_all$antaresDataList[[ind_areas[1]]]$area[1]
+          }
+          
+          prodStack_args <- list( 
+            x = list_data_all$antaresDataList[ind_areas], 
+            areas = init_area,
+            refStudy = refStudy,
+            xyCompare = "union",
+            h5requestFiltering = list_data_all$params[ind_areas],
+            unit = "GWh", 
+            interactive = TRUE, 
+            .updateBtn = TRUE, 
+            language = language,
+            .exportBtn = FALSE, 
+            .exportType = c("html2canvas"),
+            compare = .compare, 
+            .runApp = FALSE
+          )
+          
+          if(packageVersion("manipulateWidget") < "0.11"){
+            prodStack_args$.updateBtnInit <- TRUE
+          }
+          
+          mod_prodStack <- do.call(antaresViz::prodStack, prodStack_args)
           
           if("MWController" %in% class(modules$prodStack)){
             modules$prodStack$clear()
@@ -72,39 +95,60 @@ observe({
           
           # update shared input table
           input_data$data[grepl("^plotts", input_id), input_id := paste0(id_ts, "-shared_", input)]
-
+          
           output[["plotts_ui"]] <- renderUI({
-            mwModuleUI(id = id_ts, height = "800px")
+            if(packageVersion("manipulateWidget") < "0.11"){
+              mwModuleUI(id = id_ts, height = "800px")
+            } else {
+              mwModuleUI(id = id_ts, height = 800, updateBtn = TRUE)
+            }
           })
           
-          .compare <- input$sel_compare_tsPlot
-          if(input$sel_compare_mcyear){
-            .compare <- unique(c(.compare, "mcYear"))
-          }
-          
-          if(length(.compare) > 0){
-            list_compare <- vector("list", length(.compare))
-            names(list_compare) <- .compare
-            # set main with study names
-            if(length(ind_areas) != 1){
-              list_compare$main <- names(list_data_all$antaresDataList[ind_areas])
+          if(packageVersion("manipulateWidget") < "0.11"){
+            
+            .compare <- input$sel_compare_tsPlot
+            if(input$sel_compare_mcyear){
+              .compare <- unique(c(.compare, "mcYear"))
             }
-            .compare <- list_compare
-          } else {
-            if(length(ind_areas) > 1){
-              .compare <- list(main = names(list_data_all$antaresDataList[ind_areas]))
+            
+            if(length(.compare) > 0){
+              list_compare <- vector("list", length(.compare))
+              names(list_compare) <- .compare
+              # set main with study names
+              if(length(ind_areas) != 1){
+                list_compare$main <- names(list_data_all$antaresDataList[ind_areas])
+              }
+              .compare <- list_compare
             } else {
-              .compare = NULL
+              if(length(ind_areas) > 1){
+                .compare <- list(main = names(list_data_all$antaresDataList[ind_areas]))
+              } else {
+                .compare = NULL
+              }
             }
+          } else {
+            .compare <- NULL
           }
           
-          mod_plotts <- plot( x = list_data_all$antaresDataList[ind_areas], 
-                              refStudy = refStudy, 
-                              xyCompare = "union",
-                                 h5requestFiltering = list_data_all$params[ind_areas],
-                                 interactive = TRUE, .updateBtn = TRUE, language = language,
-                                .exportBtn = TRUE, .exportType = c("html2canvas"),
-                                 .updateBtnInit = TRUE, compare = .compare, .runApp = FALSE)
+          plotTS_args <- list( 
+            x = list_data_all$antaresDataList[ind_areas], 
+            refStudy = refStudy, 
+            xyCompare = "union",
+            h5requestFiltering = list_data_all$params[ind_areas],
+            interactive = TRUE, 
+            .updateBtn = TRUE, 
+            language = language,
+            .exportBtn = TRUE, 
+            .exportType = c("html2canvas"),
+            compare = .compare, 
+            .runApp = FALSE
+          )
+          
+          if(packageVersion("manipulateWidget") < "0.11"){
+            plotTS_args$.updateBtnInit <- TRUE
+          }
+          
+          mod_plotts <- do.call(antaresViz::tsPlot, plotTS_args)
           
           if("MWController" %in% class(modules$plotts)){
             modules$plotts$clear()
@@ -130,36 +174,57 @@ observe({
           input_data$data[grepl("^exchangesStack", input_id), input_id := paste0(id_exchangesStack, "-shared_", input)]
           
           output[["exchangesStack_ui"]] <- renderUI({
-            mwModuleUI(id = id_exchangesStack, height = "800px")
+            if(packageVersion("manipulateWidget") < "0.11"){
+              mwModuleUI(id = id_exchangesStack, height = "800px")
+            } else {
+              mwModuleUI(id = id_exchangesStack, height = 800, updateBtn = TRUE)
+            }
           })
           
-          .compare <- input$sel_compare_exchangesStack
-          if(input$sel_compare_mcyear){
-            .compare <- unique(c(.compare, "mcYear"))
+          if(packageVersion("manipulateWidget") < "0.11"){
+            .compare <- input$sel_compare_exchangesStack
+            if(input$sel_compare_mcyear){
+              .compare <- unique(c(.compare, "mcYear"))
+            }
+            
+            if(length(.compare) > 0){
+              list_compare <- vector("list", length(.compare))
+              names(list_compare) <- .compare
+              # set main with study names
+              if(length(ind_links) != 1){
+                list_compare$main <- names(list_data_all$antaresDataList[ind_links])
+              }
+              .compare <- list_compare
+            } else {
+              if(length(ind_links) > 1){
+                .compare <- list(main = names(list_data_all$antaresDataList[ind_links]))
+              } else {
+                .compare = NULL
+              }
+            }
+          } else {
+            .compare <- NULL
           }
           
-          if(length(.compare) > 0){
-            list_compare <- vector("list", length(.compare))
-            names(list_compare) <- .compare
-            # set main with study names
-            if(length(ind_links) != 1){
-              list_compare$main <- names(list_data_all$antaresDataList[ind_links])
-            }
-            .compare <- list_compare
-          } else {
-            if(length(ind_links) > 1){
-              .compare <- list(main = names(list_data_all$antaresDataList[ind_links]))
-            } else {
-              .compare = NULL
-            }
+          exchangeStack_args <- list( 
+            x = list_data_all$antaresDataList[ind_links], 
+            refStudy = refStudy,
+            xyCompare = "union",
+            h5requestFiltering = list_data_all$params[ind_links],
+            interactive = TRUE, 
+            .updateBtn = TRUE, 
+            language = language, 
+            .exportBtn = TRUE, 
+            .exportType = c("html2canvas"),
+            compare = .compare, 
+            .runApp = FALSE
+          )
+          
+          if(packageVersion("manipulateWidget") < "0.11"){
+            exchangeStack_args$.updateBtnInit <- TRUE
           }
-          mod_exchangesStack <- exchangesStack(x = list_data_all$antaresDataList[ind_links], 
-                                               refStudy = refStudy,
-                                               xyCompare = "union",
-                                               h5requestFiltering = list_data_all$params[ind_links],
-                                               interactive = TRUE, .updateBtn = TRUE, language = language, 
-                                               .exportBtn = TRUE, .exportType = c("html2canvas"),
-                                               .updateBtnInit = TRUE, compare = .compare, .runApp = FALSE)
+          
+          mod_exchangesStack <- do.call(antaresViz::exchangesStack, exchangeStack_args)
           
           if("MWController" %in% class(modules$exchangesStack)){
             modules$exchangesStack$clear()
