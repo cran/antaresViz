@@ -72,6 +72,9 @@ knitr::include_graphics(path = "figures/plot_resized.gif")
 #    height = 500
 #  )
 
+## ---- eval=FALSE--------------------------------------------------------------
+#  https://www.rte-france.com/eco2mix/la-production-delectricite-par-filiere
+
 ## ----exchangeStack, eval = FALSE----------------------------------------------
 #  exchangesStack(
 #    data_hourly_synthesis,

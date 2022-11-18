@@ -1,7 +1,7 @@
 Package: antaresViz
 Type: Package
 Title: Antares Visualizations
-Version: 0.17
+Version: 0.17.1
 Authors@R: c(
     person("Veronique", "Bachelier", email = "veronique.bachelier@rte-france.com", role = c("aut", "cre")),
     person("Jalal-Edine", "Zawam", role = "aut"),
@@ -33,7 +33,7 @@ Suggests: testthat, covr, rhdf5 (>= 2.20.2), ggplot2, hexbin, knitr,
         visNetwork, rmarkdown
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2021-11-24 08:27:08 UTC; BenoitThieurmel
+Packaged: 2022-11-18 13:54:15 UTC; mansouriass
 Author: Veronique Bachelier [aut, cre],
   Jalal-Edine Zawam [aut],
   Francois Guillem [aut],
@@ -44,4 +44,4 @@ Author: Veronique Bachelier [aut, cre],
   RTE [cph]
 Maintainer: Veronique Bachelier <veronique.bachelier@rte-france.com>
 Repository: CRAN
-Date/Publication: 2021-11-24 09:20:02 UTC
+Date/Publication: 2022-11-18 14:30:02 UTC
