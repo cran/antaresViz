@@ -4,7 +4,7 @@ library(antaresViz)
 ## ----loadData, message = FALSE------------------------------------------------
 load("data_for_antaresViz_vignette_extralight.Rdata")
 
-## ---- echo=FALSE--------------------------------------------------------------
+## ----echo=FALSE---------------------------------------------------------------
 knitr::include_graphics(path = "figures/plot_resized.gif")
 
 ## ----barplot, eval = FALSE----------------------------------------------------
@@ -72,7 +72,7 @@ knitr::include_graphics(path = "figures/plot_resized.gif")
 #    height = 500
 #  )
 
-## ---- eval=FALSE--------------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  https://www.rte-france.com/eco2mix/la-production-delectricite-par-filiere
 
 ## ----exchangeStack, eval = FALSE----------------------------------------------
@@ -87,7 +87,7 @@ knitr::include_graphics(path = "figures/plot_resized.gif")
 #    height = 500
 #  )
 
-## ---- echo=FALSE--------------------------------------------------------------
+## ----echo=FALSE---------------------------------------------------------------
 knitr::include_graphics(path = "figures/maplyout_resized.gif")
 
 ## ----plotmap_co2, eval = FALSE------------------------------------------------

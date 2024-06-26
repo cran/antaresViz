@@ -1,7 +1,7 @@
 Package: antaresViz
 Type: Package
 Title: Antares Visualizations
-Version: 0.18.0
+Version: 0.18.1
 Authors@R: c(
     person("Tatiana", "Vargas", email = "tatiana.vargas@rte-france.com", role = c("aut", "cre")),
     person("Jalal-Edine", "Zawam", role = "aut"),
@@ -27,13 +27,13 @@ Imports: dygraphs (>= 1.1.1.6), shiny (>= 0.13.0), plotly (>= 4.5.6),
         htmltools, htmlwidgets (>= 0.7.0), manipulateWidget (>=
         0.10.0), leaflet (>= 1.1.0), sp (>= 2.0-0), sf, webshot,
         data.table, methods, lubridate, geojsonio, graphics, stats,
-        leaflet.minicharts (>= 0.5.3), assertthat, rAmCharts, utils
+        leaflet.minicharts (>= 0.5.3), assertthat, rAmCharts, utils,
+        lifecycle
 RoxygenNote: 7.2.2
-Suggests: testthat, covr, rhdf5 (>= 2.20.2), ggplot2, hexbin, knitr,
-        visNetwork, rmarkdown
+Suggests: testthat, covr, ggplot2, knitr, visNetwork, rmarkdown
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2023-09-25 07:42:55 UTC; berthetcle
+Packaged: 2024-06-26 09:34:02 UTC; berthetcle
 Author: Tatiana Vargas [aut, cre],
   Jalal-Edine Zawam [aut],
   Francois Guillem [aut],
@@ -44,4 +44,4 @@ Author: Tatiana Vargas [aut, cre],
   RTE [cph]
 Maintainer: Tatiana Vargas <tatiana.vargas@rte-france.com>
 Repository: CRAN
-Date/Publication: 2023-09-25 09:50:09 UTC
+Date/Publication: 2024-06-26 10:00:08 UTC
