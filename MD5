@@ -1,7 +1,7 @@
-75c9e88d8d430e36b626dd4e3aaeca29 *DESCRIPTION
+e15e89770c5e498b95c474d76084aef8 *DESCRIPTION
 8eb461f447c32f3085f846907a97ca26 *LICENSE
 f59e91e84c5ca2a1d0dd60ec5805560e *NAMESPACE
-3e9b440ef2d1475ec804667fb351fd28 *NEWS.md
+7322b98cea7b9b4746bcced3efc8db82 *NEWS.md
 e4861e0537bd8952164dcd3e66ce81eb *R/catColorPal.R
 75132bf32b78fa874ef9245ee7958a7e *R/continuousColorPal.R
 35d2c71fed26945a3fd8449b4cee038e *R/get_data_for_comp.R
@@ -83,7 +83,7 @@ f9234e4077576925f0d4ca38d153f1fb *inst/application/www/readAntares.html
 9253cf1d54f119187bdd58eef35bedb1 *inst/colors_map.csv
 9eb5721d446ed3b5c3584165b1d722eb *inst/doc/antaresViz.R
 d172df5557efc97957ce9b2ee96782eb *inst/doc/antaresViz.Rmd
-82a845605f73cf550dc562a80c5e6b19 *inst/doc/antaresViz.html
+33f6820c9163d0c45bae501792c04c94 *inst/doc/antaresViz.html
 89011e88d827bd9e2308062d89b65e0e *inst/htmlwidgets/leafletDragPoints.js
 4efe3fa3460b0648387cec6335932b36 *inst/htmlwidgets/leafletDragPoints.yaml
 e35e51d1f5e5f18c5920134efee5b84c *inst/htmlwidgets/lib/Leaflet.awesome-markers/images/markers-matte.png
@@ -144,7 +144,7 @@ c51ae1e48ee3377b25af293390e52157 *tests/testthat/test-getTSData.R
 7b4cffa3470fda6d5550f1565a2c4d5a *tests/testthat/test-h5Request.R
 9bc0fbc6ea0ab2c24a114eb4e5bbe307 *tests/testthat/test-plotMap.R
 801c0ae6b4d9afd3e480ec3e5143c026 *tests/testthat/test-plotThermalGroupCapacities.R
-8a41836ba9ce17b8108b1b8eb905351d *tests/testthat/test-plotXY.R
+15873357e5012251d7b1fc81f1914e76 *tests/testthat/test-plotXY.R
 8383b84b2dad0b41c5068937e86f124a *tests/testthat/test-prodStack.R
 1662a052fd43e11bf746fcb41219e8a8 *tests/testthat/test-ts_plot.R
 d172df5557efc97957ce9b2ee96782eb *vignettes/antaresViz.Rmd
