@@ -1,7 +1,6 @@
-e15e89770c5e498b95c474d76084aef8 *DESCRIPTION
-8eb461f447c32f3085f846907a97ca26 *LICENSE
+bc60b9a750a910debffe43716dfaa3f5 *DESCRIPTION
 f59e91e84c5ca2a1d0dd60ec5805560e *NAMESPACE
-7322b98cea7b9b4746bcced3efc8db82 *NEWS.md
+3f20879c9a75b3c297b30417e0f939d5 *NEWS.md
 e4861e0537bd8952164dcd3e66ce81eb *R/catColorPal.R
 75132bf32b78fa874ef9245ee7958a7e *R/continuousColorPal.R
 35d2c71fed26945a3fd8449b4cee038e *R/get_data_for_comp.R
@@ -33,7 +32,7 @@ c60c5a74e13e220ce61322b368b550ea *R/savePlotAsPng.R
 a9f8b1f2c11b39cb84eba6093e8fa130 *R/setInteractivity.R
 691562fa8dd5d2081475d3c7a6bffaee *R/stack.R
 4f57082b5220373dba6ac8715ca095dc *R/stack_aliases.R
-bc1503e2bb793883d732ace6998f26a2 *R/stack_exchanges.R
+cb606c81f36b19005789d45255d30375 *R/stack_exchanges.R
 fd601cf229cb8f72c5a34a5a55b72caf *R/stack_exchanges_aliases.R
 af7f87032e59335f94f057c62a3e5944 *R/stack_map.R
 25202be27be33c34b07b96d9a41fda8c *R/stack_prod.R
@@ -83,7 +82,7 @@ f9234e4077576925f0d4ca38d153f1fb *inst/application/www/readAntares.html
 9253cf1d54f119187bdd58eef35bedb1 *inst/colors_map.csv
 9eb5721d446ed3b5c3584165b1d722eb *inst/doc/antaresViz.R
 d172df5557efc97957ce9b2ee96782eb *inst/doc/antaresViz.Rmd
-33f6820c9163d0c45bae501792c04c94 *inst/doc/antaresViz.html
+49f7a17da19e30c51eaa4af5cd4c6435 *inst/doc/antaresViz.html
 89011e88d827bd9e2308062d89b65e0e *inst/htmlwidgets/leafletDragPoints.js
 4efe3fa3460b0648387cec6335932b36 *inst/htmlwidgets/leafletDragPoints.yaml
 e35e51d1f5e5f18c5920134efee5b84c *inst/htmlwidgets/lib/Leaflet.awesome-markers/images/markers-matte.png
@@ -113,7 +112,7 @@ ffca7be45af7d8736c9bf16655dcc65c *inst/mapLayout/ml.rda
 653533b7358f29e887c34c9f79833bb2 *inst/moduleDev/moduleStackMap.R
 f1c13e532de332e63a2dd48c93c665d7 *inst/test_scripts/compare_test.R
 3499637becf49a9c3e1e18337330b205 *man/addShadows.Rd
-d204242a037a3bedb191b8a031f37abf *man/exchangesStack.Rd
+32e1566e0a6e9f0e42ecd8aa1f81d193 *man/exchangesStack.Rd
 3d49798626e3d61b11bc735295e5dbd6 *man/figures/antares_simulator.png
 ae87a9ad1bc412c3b6b6d26d37c27ab7 *man/limitSizeGraph.Rd
 395d5e8ef9f6ca2e5cde4c68ca7254dd *man/mapLayout.Rd
